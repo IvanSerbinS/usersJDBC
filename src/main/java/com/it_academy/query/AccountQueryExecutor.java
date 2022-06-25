@@ -50,18 +50,18 @@ public class AccountQueryExecutor {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(
                 format("SELECT balance FROM Accounts WHERE accountid LIKE(%d);", transaction.getAccountid()));
-        if(!transaction.getIsTransactionOut()) {
+        if (!transaction.getIsTransactionOut()) {
             preBalance = resultSet.getDouble("balance") + transaction.getAmount();
-        }else{
-            preBalance = resultSet.getDouble("balance") + transaction.getAmount()*(-1);
+        } else {
+            preBalance = resultSet.getDouble("balance") + transaction.getAmount() * (-1);
         }
         resultSet.close();
         statement.close();
         return !(preBalance < 0) && !(preBalance > 2000000000);
     }
 
-    public static void balanceRecount(int accountid, Connection connection) throws SQLException{
-        double balance=sumOfAllAccountTransactions(accountid, connection);
+    public static void balanceRecount(int accountid, Connection connection) throws SQLException {
+        double balance = sumOfAllAccountTransactions(accountid, connection);
         Statement statement = connection.createStatement();
         try {
             statement.executeUpdate(format("UPDATE Accounts SET balance = %s WHERE accountid = %d;",
@@ -71,7 +71,6 @@ public class AccountQueryExecutor {
         }
         statement.close();
     }
-
 
     public static void updatingAccount(Account account, Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
@@ -83,6 +82,4 @@ public class AccountQueryExecutor {
         }
         statement.close();
     }
-
-
 }

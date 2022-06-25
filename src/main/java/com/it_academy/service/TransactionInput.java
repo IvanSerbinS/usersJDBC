@@ -5,7 +5,7 @@ import com.it_academy.model.Transaction;
 import java.util.Scanner;
 
 public class TransactionInput {
-    public static Transaction enterTransaction(boolean isTransactionOut){
+    public static Transaction enterTransaction(boolean isTransactionOut) {
         Transaction transaction = new Transaction();
         Scanner scanner = new Scanner(System.in);
         transaction.setIsTransactionOut(isTransactionOut);
@@ -21,10 +21,9 @@ public class TransactionInput {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }while(!valid);
-
+        } while (!valid);
         //Entering amount
-        do{
+        do {
             System.out.println("Enter an amount (required): ");
             try {
                 transaction.setAmount(scanner.nextLine());
@@ -33,10 +32,9 @@ public class TransactionInput {
                 System.out.println(e.getMessage());
             }
         } while (!valid);
-
-        System.out.println("You entered accountid: \""+transaction.getAccountid()+"\"");
+        System.out.println("You entered accountid: \"" + transaction.getAccountid() + "\"");
         System.out.println("and");
-        System.out.println("Amount: \""+transaction.getAmount()+"\"");
+        System.out.println("Amount: \"" + transaction.getAmount() + "\"");
         return transaction;
     }
 }

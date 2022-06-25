@@ -29,7 +29,7 @@ public class UserQueryExecutor {
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(format("SELECT userid FROM Users WHERE userid LIKE(%d);",
                 account.getUserid()));
-        boolean isUseridFound=resultSet.next();
+        boolean isUseridFound = resultSet.next();
         resultSet.close();
         statement.close();
         return isUseridFound;

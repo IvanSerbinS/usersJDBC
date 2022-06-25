@@ -25,14 +25,14 @@ public class Account {
             throw new InputMismatchException("Userid required.");
         } else if (userid.length() > 10) {
             throw new InputMismatchException("Userid mustn't be longer than 10 characters.");
-        }else if(userid.contains("-")||userid.contains("+")){
+        } else if (userid.contains("-") || userid.contains("+")) {
             throw new InputMismatchException("Userid must contain only numbers");
         }
         try {
             id = Integer.parseInt(userid);
             this.userid = id;
         } catch (NumberFormatException e) {
-            throw new NumberFormatException(e.getMessage()+" Invalid userid.");
+            throw new NumberFormatException(e.getMessage() + " Invalid userid.");
         }
     }
 
@@ -41,9 +41,9 @@ public class Account {
     }
 
     public void setBalance(double balance) throws Exception {
-        if (balance<0){
+        if (balance < 0) {
             throw new Exception("The balance couldn't be lower than 0.");
-        }else if (balance>2000000000){
+        } else if (balance > 2000000000) {
             throw new Exception("The balance couldn't be more than 2000000000.");
         }
         this.balance = balance;

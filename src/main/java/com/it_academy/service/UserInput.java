@@ -10,7 +10,6 @@ public class UserInput {
         User user = new User();
         Scanner scanner = new Scanner(System.in);
         boolean valid = false;
-
         //Entering name
         do {
             System.out.println("Enter user's name (required): ");
@@ -20,10 +19,9 @@ public class UserInput {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }while(!valid);
-
+        } while (!valid);
         //Entering address
-        do{
+        do {
             System.out.println("Enter user's address (optional): ");
             try {
                 user.setAddress(scanner.nextLine());
@@ -32,10 +30,9 @@ public class UserInput {
                 System.out.println(e.getMessage());
             }
         } while (!valid);
-
         System.out.println("Entered:");
-        System.out.println("name: \""+user.getName()+"\"");
-        System.out.println("address: \""+user.getAddress()+"\"");
+        System.out.println("name: \"" + user.getName() + "\"");
+        System.out.println("address: \"" + user.getAddress() + "\"");
         return user;
     }
 }

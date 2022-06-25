@@ -20,11 +20,9 @@ public class AccountInput {
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-
-        }while(!valid);
-
+        } while (!valid);
         //Entering currency
-        do{
+        do {
             System.out.println("Enter currency (required): ");
             try {
                 account.setCurrency(scanner.nextLine());
@@ -33,10 +31,9 @@ public class AccountInput {
                 System.out.println(e.getMessage());
             }
         } while (!valid);
-
         System.out.println("Entered:");
-        System.out.println("userid: \""+account.getUserid()+"\"");
-        System.out.println("currency: \""+account.getCurrency()+"\"");
+        System.out.println("userid: \"" + account.getUserid() + "\"");
+        System.out.println("currency: \"" + account.getCurrency() + "\"");
         return account;
     }
 }

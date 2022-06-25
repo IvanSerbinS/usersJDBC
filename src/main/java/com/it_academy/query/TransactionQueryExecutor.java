@@ -21,7 +21,7 @@ public class TransactionQueryExecutor {
             statement = connection.prepareStatement
                     (format("INSERT INTO Transactions (accountid, amount) VALUES (%d, '%s');",
                             transaction.getAccountid(),
-                            transaction.getAmount()*(-1)));
+                            transaction.getAmount() * (-1)));
         }
         boolean transactionAdded;
         if (statement.executeUpdate() > 0) {
@@ -34,16 +34,14 @@ public class TransactionQueryExecutor {
         return transactionAdded;
     }
 
-    public static double sumOfAllAccountTransactions(int accountid,Connection connection) throws SQLException{
+    public static double sumOfAllAccountTransactions(int accountid, Connection connection) throws SQLException {
         double sum;
         PreparedStatement statement = connection.prepareStatement(format(
-                "SELECT sum(amount) AS sum FROM Transactions WHERE accountid=%d",accountid));
+                "SELECT sum(amount) AS sum FROM Transactions WHERE accountid=%d", accountid));
         ResultSet resultSet = statement.executeQuery();
-        sum=resultSet.getDouble("sum");
+        sum = resultSet.getDouble("sum");
         resultSet.close();
         statement.close();
         return sum;
     }
-
-
 }
